@@ -2,7 +2,7 @@ import argparse
 from urllib.request import urlopen, Request
 import json
 import colorama
-from colorama import Back
+from colorama import Back, Style
 argparse = argparse.ArgumentParser()
 argparse.add_argument("-r", "--rial", action="store_true", help="shows the values in IRR")
 argparse.add_argument("-d", "--difference", action="store_true", help="shows the difference point")
@@ -40,11 +40,11 @@ def show_diff(val):
     return ""
 def print_data(info):
     if info["move"] == "up":
-        print(Back.CYAN + names[info["title"]] + " = " + print_value(info["value"]) + "⬆️ " + show_diff(info["differenceP"]))
+        print(Back.GREEN + names[info["title"]] + " = " + print_value(info["value"]) + "⬆️ " + show_diff(info["differenceP"]) + Style.RESET_ALL)
     elif info["move"] == "static":
-        print(Back.YELLOW + names[info["title"]] + " = " + print_value(info["value"]) + "⏸️ " + show_diff(info["differenceP"]))
+        print(Back.YELLOW + names[info["title"]] + " = " + print_value(info["value"]) + "⏸️ " + show_diff(info["differenceP"]) + Style.RESET_ALL)
     elif info["move"] == "down":
-        print(Back.RED + names[info["title"]] + " = " + print_value(info["value"]) + "⬇️ " + show_diff(info["differenceP"]))
+        print(Back.RED + names[info["title"]] + " = " + print_value(info["value"]) + "⬇️ " + show_diff(info["differenceP"]) + Style.RESET_ALL)
 for item in data_json["items"]:
     if item["title"] in lookFor:
         print_data(item)
