@@ -34,7 +34,7 @@ def print_value(val):
 def show_diff(val):
     if args.difference is True:
         if args.rial is True:
-            return str(val * 10) + " TMN "
+            return str(val * 10) + " IRR "
         else: 
             return str(val) + " TMN "
     return ""
