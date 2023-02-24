@@ -7,7 +7,7 @@ argparse = argparse.ArgumentParser()
 argparse.add_argument("-r", "--rial", action="store_true", help="shows the values in IRR")
 argparse.add_argument("-d", "--difference", action="store_true", help="shows the difference point")
 args = argparse.parse_args()
-colorama.init(autoreset=True)
+colorama.init(wrap=False)
 try:
     req = Request(
         url = "https://www.iranintl.com/api/finance?locale=en",
@@ -40,7 +40,7 @@ def show_diff(val):
     return ""
 def print_data(info):
     if info["move"] == "up":
-        print(Back.GREEN + names[info["title"]] + " = " + print_value(info["value"]) + "⬆️ " + show_diff(info["differenceP"]))
+        print(Back.CYAN + names[info["title"]] + " = " + print_value(info["value"]) + "⬆️ " + show_diff(info["differenceP"]))
     elif info["move"] == "static":
         print(Back.YELLOW + names[info["title"]] + " = " + print_value(info["value"]) + "⏸️ " + show_diff(info["differenceP"]))
     elif info["move"] == "down":
